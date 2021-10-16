@@ -24,16 +24,24 @@ def connect_fetch():
             print('Connected to the database')
             
             #select query
+             #select query
+            sql_insert_query = "insert into BUYER value('Boluwatife', 'Purchasing', 'Buyer 5', 'Mary Smith')"
+            sql_update_query = "update BUYER set Supervisor = 'Pete Hansen' where Position = 'Manager'"
+            # sql_delete_query = "delete from BUYER where Position = 'Buyer 1'"
+          
             sql_select_query = "select * from BUYER"
             cursor = conn.cursor()
+            cursor.execute(sql_insert_query)
+            cursor.execute(sql_update_query)
+            # cursor.execute(sql_delete_query)
             cursor.execute(sql_select_query)
             records = cursor.fetchall()
             print('Total number of rows in buyer is: ', cursor.rowcount)
             
             #display data from the database
             print("\nPrinting each Human record")
-            records.insert(5,['Boluwatife', 'Purchasing', 'Buyer 5', 'Mary Smith'])
-            records.insert(6,['Boluwatife', 'Purchasing', 'Buyer 5', 'Mary Smith'])
+            #records.insert(5,['Boluwatife', 'Purchasing', 'Buyer 5', 'Mary Smith'])
+            #records.insert(6,['Boluwatife', 'Purchasing', 'Buyer 5', 'Mary Smith'])
             for row in records:
                 print("BuyerName : ", row[0])
                 print("Departmaent : ", row[1])
